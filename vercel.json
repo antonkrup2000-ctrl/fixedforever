@@ -1,6 +1,16 @@
 {
   "version": 2,
   "builds": [
-    { "src": "index.js", "use": "@vercel/node" }
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "functions/proxy.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    { "src": "/.netlify/functions/(.*)", "dest": "/functions/proxy.js" }
   ]
 }
