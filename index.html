@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rammerhead Proxy Frontend</title>
+<style>
+body { font-family: sans-serif; background: #1a1a2e; color: white; padding: 2rem; }
+input, button { padding: 0.5rem; border-radius: 5px; margin: 0.25rem 0; border: none; }
+button { background: #162447; color: #fff; cursor: pointer; }
+iframe { width: 100%; height: 80vh; border: 2px solid #0f3460; border-radius: 5px; margin-top: 1rem; }
+</style>
+</head>
+<body>
+<h1>Rammerhead Proxy</h1>
+
+<input type="text" id="urlInput" placeholder="Enter URL" size="50">
+<button id="goBtn">Go</button>
+
+<iframe id="proxyFrame" src=""></iframe>
+
+<script>
+const goBtn = document.getElementById("goBtn");
+const urlInput = document.getElementById("urlInput");
+const iframe = document.getElementById("proxyFrame");
+
+goBtn.addEventListener("click", () => {
+  const targetUrl = encodeURIComponent(urlInput.value);
+  iframe.src = `/api/proxy?url=${targetUrl}&sessionId=demo123`;
+});
+</script>
+</body>
+</html>
